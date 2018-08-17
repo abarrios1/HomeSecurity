@@ -20,7 +20,7 @@ class inventory extends Model
      *
      * @var array
      */
-    protected $hidden = [
+    /*protected $hidden = [
         'uid', 'mac', 'model', 'serial', 'product'
-    ];
+    ];*/
 }

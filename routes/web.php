@@ -1,5 +1,5 @@
 <?php
-
+use App\inventory;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,15 @@ Route::get('/', function () {
     return view('/layouts/main');
 });
 //Route::get('/', 'HomeController@Index');
-Route::get('/Home', 'HomeController@Index');
+Route::get('/Home', 'HomeController@Home');
+Route::get('/display', 'HomeController@Display')->name('Home.display');
+Route::get('/search', function ($id) {
+});
+    
+
+// CRUD functions
+Route::get("/Home/details/{id}", 'HomeController@details')->name('Home.details');
+Route::get("/Home/edit/{id}", 'HomeController@details')->name('Home.edit');
+Route::get("/Home/delete/{id}", 'HomeController@details')->name('Home.delete');
+
+Route::get('/jQuery', 'jQueryController@index')->name('jQuery.index');
