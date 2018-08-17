@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/layouts/main');
 });
+//Route::get('/', 'HomeController@Index');
+Route::get('/Home', 'HomeController@Index');
