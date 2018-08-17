@@ -5,8 +5,8 @@ Using jQuery to fetch data and perform necessary functions.
 * php >= 7.1
 * composer
 
-Make sure to run > composer update >
+Make sure to run > composer update 
 
 After packages are installed, run > php artisan key:generate > to generate a key to use the project with.
 
-Next run it! > php artisan serve >
+Next run it! > php artisan serve
