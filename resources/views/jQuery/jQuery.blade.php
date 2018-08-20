@@ -43,7 +43,7 @@
 
 
 <script>
- 
+
 $(document).ready(function() {
 
 function blink_text() {
@@ -92,7 +92,7 @@ $('#btnImg').on('click', function(e) {
 });
 
 window.onload = function() {
-
+var data = {!! json_encode($manufacts) !!};
 var options = {
 	title: {
 		text: "Type of Manufacturers"
@@ -105,13 +105,13 @@ var options = {
 			indexLabel: "{label} ({y})",
 			yValueFormatString:"#,##0.#"%"",
 			dataPoints: [
-				{ label: "LLC", y: 36 },
-				{ label: "LTD", y: 31 },
-				{ label: "INC", y: 7 },
-				{ label: "PLC", y: 7 },
-				{ label: "Family", y: 6 },
-				{ label: "Group", y: 10 },
-				{ label: "Others", y: 3 }
+				{ label: "LLC", y: data['llc'] },
+				{ label: "LTD", y: data['ltd'] },
+				{ label: "INC", y: data['inc'] },
+				{ label: "PLC", y: data['plc'] },
+				{ label: "Family", y: data['family'] },
+				{ label: "Group", y: data['group'] },
+				{ label: "Partnership", y: data['partnership'] }
 			]
 	}]
 };
