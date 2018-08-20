@@ -7,6 +7,13 @@
         width: 90%;
         padding-top: 25px;
     }
+    
+    .pieGraph {
+        float: left;
+        display:block;
+    }
+    
+    
 </style>
 
 <div class="centered">
@@ -64,8 +71,75 @@
                 </table>
                 {!! $invent->render() !!}
             </div>
+            
+                <div class="pieGraph" style="height: 300px; width: 50%;"></div>
+                <div class="lineGraph" style="height: 300px; width: 50%;"></div>
+            
+            </div>
         </div>
     @endif
     </div>
 </div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script>
+        window.onload = function() {
+        var data = {!! json_encode($manufacts) !!};
+        var pie = {
+            title: {
+                text: "Type of Manufacturers"
+            },
+            data: [{
+                    type: "pie",
+                    startAngle: 45,
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabel: "{label} ({y})",
+                    yValueFormatString:"#,##0.#"%"",
+                    dataPoints: [
+                        { label: "LLC", y: data['llc'] },
+                        { label: "LTD", y: data['ltd'] },
+                        { label: "INC", y: data['inc'] },
+                        { label: "PLC", y: data['plc'] },
+                        { label: "Family", y: data['family'] },
+                        { label: "Group", y: data['group'] },
+                        { label: "Partnership", y: data['partnership'] }
+                    ]
+            }]
+        };
+        
+        var line = {
+
+        animationEnabled: true,
+        theme: "light2",
+        title:{
+            text: "Simple Line Chart"
+        },
+        axisY:{
+            includeZero: false
+        },
+        data: [{        
+            type: "line",       
+            dataPoints: [
+                { y: 450 },
+                { y: 414},
+                { y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
+                { y: 460 },
+                { y: 450 },
+                { y: 500 },
+                { y: 480 },
+                { y: 480 },
+                { y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+                { y: 500 },
+                { y: 480 },
+                { y: 510 }
+            ]
+        }]
+        };
+
+        $(".pieGraph").CanvasJSChart(pie);
+        $('.lineGraph').CanvasJSChart(line);
+        }
+
+    </script>
 @endsection
